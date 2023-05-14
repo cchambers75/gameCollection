@@ -150,7 +150,9 @@ const Table: React.FC<{ data: Games[] }> = ({ data }) => {
 										</td>
 										<td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">
 											{game.link ? (
-												<Link href={game.link}>Link to Game</Link>
+												<Link target="_blank" href={game.link}>
+													Link to Game
+												</Link>
 											) : (
 												"No Link"
 											)}
