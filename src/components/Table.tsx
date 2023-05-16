@@ -22,7 +22,6 @@ function debounce(func: (...args: any[]) => void, wait: number) {
 }
 
 const Table: React.FC<{ data: Games[] }> = ({ data }) => {
-	console.log(data);
 	const [searchTerm, setSearchTerm] = useState("");
 	const [sortConfig, setSortConfig] = useState<{
 		key: keyof Games;

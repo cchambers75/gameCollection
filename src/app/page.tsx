@@ -1,6 +1,7 @@
 import GameTable from "@/components/GameTable";
 import { Suspense } from "react";
 import { Press_Start_2P } from "next/font/google";
+import Loading from "./loading";
 
 const pressStart2p = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
@@ -15,7 +16,7 @@ export default function Home() {
 				</h1>
 			</div>
 
-			<Suspense fallback={"loading..."}>
+			<Suspense fallback={<Loading />}>
 				{/* @ts-expect-error Server Component */}
 				<GameTable />
 			</Suspense>
