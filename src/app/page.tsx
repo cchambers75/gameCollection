@@ -4,6 +4,8 @@ import { Press_Start_2P } from "next/font/google";
 
 const pressStart2p = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
+export const revalidate = 0;
+
 export default function Home() {
 	return (
 		<main className="flex min-h-screen flex-col items-center p-4 md:p-16">

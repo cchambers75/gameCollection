@@ -1,8 +1,6 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import Table from "./Table";
 
-export const revalidate = 60;
-
 type Games = {
 	title: string;
 	category: string;
