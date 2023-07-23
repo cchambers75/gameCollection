@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { TiDeleteOutline } from "react-icons/Ti";
+import { TiDeleteOutline } from "react-icons/ti";
 import EndGameDialog from "./EndGameDialog";
 
 interface Player {
