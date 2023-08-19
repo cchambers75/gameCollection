@@ -17,7 +17,6 @@ const ScoringTable = () => {
 	const [name, setName] = useState("");
 	const [numRounds, setNumRounds] = useState(5);
 	const [game, setGame] = useState(false);
-	const [open, setOpen] = useState(false);
 
 	const handleAddPlayer = () => {
 		setPlayers((prevPlayers) => [
@@ -105,8 +104,6 @@ const ScoringTable = () => {
 			</div>
 			{!game && (
 				<div className="bg-slate-200 shadow-lg rounded-md px-10 py-6">
-					{/* <h2 className="text-lg font font-semibold">Scoring</h2> */}
-
 					<div className="flex flex-col space-y-4 justify-center items-center">
 						<div className="w-48 space-y-4 text-center">
 							<label htmlFor="numPlayers" className="font-semibold text-2xl">
@@ -138,23 +135,25 @@ const ScoringTable = () => {
 						</div>
 
 						{players.length > 0 && (
-							<div>
+							<div className="w-full flex flex-col items-center">
 								<h3 className="font-semibold text-lg underline">
 									Players in Game
 								</h3>
-								<ul className="pl-4">
+								<ul className="w-6/12 px-2">
 									{players.map((player) => (
 										<li
 											key={player.playerNum}
-											className="flex flex-row space-x-2 items-center"
+											className="flex flex-row space-x-2 items-center justify-between"
 										>
+											<span className="capitalize text-sm w-full flex-wrap">
+												{player.name}
+											</span>
 											<button
 												type="button"
 												onClick={() => handlePlayerRemove(player.playerNum)}
 											>
 												<TiDeleteOutline className="text-red-600" />
 											</button>
-											<span className="capitalize">{player.name}</span>
 										</li>
 									))}
 								</ul>
@@ -216,7 +215,6 @@ const ScoringTable = () => {
 															<input
 																className="text-center border focus:border-blue-400 focus:outline-blue-400 rounded-lg px-4 py-2 w-full"
 																type="number"
-																value={player.roundScore[idx] || 0}
 																onChange={(e) =>
 																	handleScoreChange(
 																		player.playerNum,
