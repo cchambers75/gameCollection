@@ -19,10 +19,9 @@ export const revalidate = 0;
 
 async function getGames() {
 	const doc = new GoogleSpreadsheet(
-		"15r7axbjFtiJqLKuU-zJpRIaE5x_NjlS7yQEtmBfMlbo"
+		"15r7axbjFtiJqLKuU-zJpRIaE5x_NjlS7yQEtmBfMlbo",
+		{ apiKey: process.env.GOOGLE_API_KEY as string }
 	);
-
-	doc.useApiKey(process.env.GOOGLE_API_KEY as string);
 
 	await doc.loadInfo();
 
@@ -30,12 +29,12 @@ async function getGames() {
 	const rows = await sheet.getRows();
 	const rowData: Games[] = rows.map((row) => {
 		return {
-			title: row["Title"],
-			category: row["Category"],
-			playersMin: parseInt(row["Players (Min)"]),
-			playersMax: parseInt(row["Players (Max)"]),
-			playingTime: parseInt(row["Playing Time (Min)"]),
-			link: row["Website Link"],
+			title: row.get("Title"),
+			category: row.get("Category"),
+			playersMin: parseInt(row.get("Players (Min)")),
+			playersMax: parseInt(row.get("Players (Max)")),
+			playingTime: parseInt(row.get("Playing Time (Min)")),
+			link: row.get("Website Link"),
 		};
 	});
 	rowData.sort((a, b) => {
